@@ -20,7 +20,7 @@ class Device:
     def probe(self) -> dict:
         return {'type': 'probe', 'dev_id': self._id, 'from': len(self.records)}
     def onMessage(self, data: dict):
-        if data is not None and 'type' in data and data['type'] == 'update':
+        if data is not None and 'type' in data and data['type'] == 'update': 
             
             _from = data['from']
             if _from > len(self.records):
@@ -49,7 +49,7 @@ def testSyncing():
     devices = [Device(f"dev_{i}") for i in range(10)]
     syn = SyncService()
 
-    _N = int(1e2)
+    _N = int(1e6)
     for i in range(_N):
         for _dev in devices:
             data = _dev.obtainData()
@@ -87,4 +87,4 @@ def assertEquivalent(d1: dict, d2: dict): #was getting a `string indices must be
     for kee in _DATA_KEYS:
         assert dict(d1)['data'][kee] == dict(d2)['data'][kee]
 testSyncing()
-print(f"Syncing Successful! oogabooga")
+print(f"Syncing Successful! oogabooga") #output once syncing has been completed
